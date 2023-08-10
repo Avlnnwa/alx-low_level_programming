@@ -1,52 +1,89 @@
-#include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
+
 /**
- * string_nconcat - function that concatenates two strings
+ * *string_nconcat - concatenates n bytes of a string to another string
+ * @s1: string to append to
+ * @s2: string to concatenate from
+ * @n: number of bytes from s2 to concatenate to s1
  *
- * @s1: string of chars
- * @s2: string of chars
- * @n: size of s2 to copy
- *
- * Return: address of the newly allocated memory
+ * Return: pointer to the resulting string
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
-
 {
-	unsigned int len1, len2 = 0;
-	unsigned int i, j;
-	char *str_copy;
-	char *tmp1 = s1;
+	char *s;
+	unsigned int k = 0, j = 0, len1 = 0, len2 = 0;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
 
-	i = 0;
-	while (*s1++)
-		i++;
-	len1 = i;
-	s1 = tmp1;
+	if (n < len2)
+		s = malloc(sizeof(char) * (len1 + n + 1));
+	else
+		s = malloc(sizeof(char) * (len1 + len2 + 1));
 
-	len2 = n;
-	str_copy = malloc((len1 + len2) * sizeof(char) + 1);
-	if (str_copy == NULL)
+	if (!s)
 		return (NULL);
 
-	j = 0;
-	while (j < len1)
-
+	while (k < len1)
 	{
-		str_copy[j] = s1[j];
-		j++;
+		s[k] = s1[k];
+		k++;
 	}
-	while (j < len1 + len2)
 
+	while (n < len2 && k < (len1 + n))
+		s[k++] = s2[j++];
+
+	while (n >= len2 && k < (len1 + len2))
+		s[k++] = s2[j++];
+
+	s[k] = '\0';
+
+	return (s);
+}#include <stdlib.h>
+#include "main.h"
+
+/**
+ * *string_nconcat - concatenates n bytes of a string to another string
+ * @s1: string to append to
+ * @s2: string to concatenate from
+ * @n: number of bytes from s2 to concatenate to s1
+ *
+ * Return: pointer to the resulting string
+ */
+char *string_nconcat(char *s1, char *s2, unsigned int n)
+{
+	char *s;
+	unsigned int k = 0, j = 0, len1 = 0, len2 = 0;
+
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
+
+	if (n < len2)
+		s = malloc(sizeof(char) * (len1 + n + 1));
+	else
+		s = malloc(sizeof(char) * (len1 + len2 + 1));
+
+	if (!s)
+		return (NULL);
+
+	while (k < len1)
 	{
-		str_copy[j] = s2[j - len1];
-		j++;
+		s[k] = s1[k];
+		k++;
 	}
-	str_copy[j] = '\0';
-	return (str_copy);
+
+	while (n < len2 && k < (len1 + n))
+		s[k++] = s2[j++];
+
+	while (n >= len2 && k < (len1 + len2))
+		s[k++] = s2[j++];
+
+	s[k] = '\0';
+
+	return (s);
 }
