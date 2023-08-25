@@ -1,9 +1,10 @@
 #include "list.h"
 
-/*
- * print_list - This prints all the elements of a list_t list.
- * @h: is the singly linked list
- * Return: returns the number of elements on the list
+/**
+ * print_list - prints all the elements of a list_t list.
+ * @h: singly linked list.
+ * Return: number of elements in the list.
+ * main - returns 0.
  */
 
 size_t print_list(const list_t *h)
@@ -26,4 +27,15 @@ h = h->next
 node_count++;
 }
 return (node_count);
+}
+
+int main(void)
+{
+list_t node3 = {"World", NULL};
+list_t node2 = {"Hello", &node3};
+list_t node1 = {"Goodbye", &node2};
+size_t num_nodes = print_list(&node1);
+printf("Number of nodes: %lu\n", num_nodes);
+
+return (0);
 }
