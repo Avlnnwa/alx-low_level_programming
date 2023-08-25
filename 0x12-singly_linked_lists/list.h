@@ -1,23 +1,23 @@
-#ifndef LINKED_LIST
-#define LINKED_LIST
+#ifndef _LISTS_
+#define _LISTS_
 
 #include <stdio.h>
 #include <stddef.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
- * struct list_t - is the singly linked list.
- * @str: string - with the use of malloc
- * @length: length of the string
- * @next: is the pointer that points to the next node.
+ * struct list - singly linked list
+ * @str: string
+ * @len: length of the string
+ * @next: points to the next node
  */
 
-typedef struct list_t
+typedef struct list
 {
-char *str;
-unsigned int length;
-struct list_t *next;
+	char *str;
+	unsigned int len;
+	struct list *next;
 } list_t;
 
 size_t print_list(const list_t *h);
