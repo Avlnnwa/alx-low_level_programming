@@ -1,5 +1,5 @@
-#ifndef _LISTS_
-#define _LISTS_
+#ifndef LINKED_LIST
+#define LINKED_LIST
 
 #include <stdio.h>
 #include <stddef.h>
@@ -9,14 +9,14 @@
 /*
  * struct list - singly linked list
  * @str: string
- * @len: length of the string
+ * @length: length of the string
  * @next: points to the next node
  */
 
 typedef struct list
 {
 	char *str;
-	unsigned int len;
+	unsigned int length;
 	struct list *next;
 } list_t;
 
