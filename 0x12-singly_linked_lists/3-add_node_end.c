@@ -18,7 +18,8 @@ return (NULL);
 
 new->str = strdup(str);
 
-for (new_char = 0; str[new_char]; new_char++);
+for (new_char = 0; str[new_char]; new_char++)
+;
 
 new->len = new_char;
 new->next = NULL;
