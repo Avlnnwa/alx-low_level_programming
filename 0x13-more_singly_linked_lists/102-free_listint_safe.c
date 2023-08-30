@@ -16,10 +16,11 @@ while (curr != NULL)
 {
 listint_t *temp = curr;
 curr = curr->next;
+
 free(temp);
 count++;
 
-if (temp == current)
+if (temp <= curr)
 {
 *h = NULL;
 break;
@@ -28,4 +29,5 @@ break;
 
 *h = NULL;
 return (count);
+
 }
