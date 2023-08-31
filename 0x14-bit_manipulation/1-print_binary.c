@@ -8,7 +8,20 @@
 
 void print_binary(unsigned long int n)
 {
-	if (n >> 1)
-		print_binary(n >> 1);
-	_putchar((n & 1) + '0');
+int count = sizeof(unsigned long int) * 8 - 1;
+int test = 0;
+
+while (count >= 0)
+{
+int bit = (n >> count) & 1;
+if (bit || test)
+{
+_putchar(bit + '0');
+flag = 1;
+}
+
+count--;
+}
+if (!test)
+_putchar('0');
 }
