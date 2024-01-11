@@ -2,13 +2,12 @@
 
 /**
  * dlistint_len - get number of nodes
- * @h: head of list 
+ * @h: the head of list
  * Return: number of nodes
  */
-
-size_t dlistint_len(const dlistint_t *h);
+size_t dlistint_len(const dlistint_t *h)
 {
-	int nodes = o;
+	int nodes = 0;
 
 	while (h)
 	{
